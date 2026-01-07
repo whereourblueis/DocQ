@@ -1,0 +1,177 @@
+@font-face {
+  font-family: "GothicA1";
+  src: url("/GothicA1-Bold.ttf") format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ❗️ 수정: html, body의 불필요한 flex 속성 및 스크롤 방지 제거 */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #e6f4fd;
+}
+
+/* 전체 컨테이너: 앱의 너비를 정하고 중앙 정렬 */
+.main-container {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 20px 20px;
+  min-height: 100vh;
+  background-color: #eaf6ff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 헤더 --- */
+.main-header {
+  background-color: #6d9bd3;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 50px;
+  font-size: 25px;
+  /* 컨테이너의 padding과 겹치지 않도록 너비 조정 */
+  width: 1000px;
+  position: relative;
+  left: -20px;
+}
+
+.logo {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.login-link, .mypage-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-link:hover, .mypage-link:hover {
+  text-decoration: underline;
+}
+
+.logout-btn {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background-color: #e0e0e0;
+}
+
+
+/* --- 메인 콘텐츠 --- */
+.main-body {
+  flex-grow: 1; /* 남은 공간을 모두 차지하도록 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 콘텐츠를 수직 중앙에 가깝게 배치 */
+  gap: 40px; /* 섹션 간 간격 */
+}
+
+/* 이미지와 말풍선 영역 */
+.top-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.MainPageill {
+  width: 350px; /* 크기 살짝 조정 */
+  height: auto;
+}
+
+.speech-bubble {
+  background-color: #b8e4fd;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 16px;
+  line-height: 1.5;
+  max-width: 300px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 검색창 영역 */
+.bottom {
+  text-align: center;
+}
+
+.search-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 40px;
+  padding: 8px 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+/* ❗️ 수정: 검색 관련 모든 입력 요소들의 스타일을 한 번에 제어 */
+.category-select,
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.category-select {
+  width: 170px;
+  border-right: 1px solid #eee; /* 구분선 */
+}
+
+.search-box input {
+  flex-grow: 1; /* 남은 공간 모두 차지 */
+}
+
+.search-start {
+  height: 45px;
+  width: 90px;
+  background-color: #129fd6;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-start:hover {
+  background-color: #0e86b3;
+}

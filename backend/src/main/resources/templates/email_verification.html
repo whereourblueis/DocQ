@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>이메일 인증 코드 안내</title>
+</head>
+<body style="margin:0; padding:0; background:#e5f4fb;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#e5f4fb;min-height:100vh;padding:30px 0;">
+    <tr>
+      <td align="center">
+        <table width="420" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;padding:0 0 34px 0;box-shadow:0 4px 22px rgba(0,102,153,0.07);font-family: 'Apple SD Gothic Neo', Arial, sans-serif;">
+          <tr>
+            <td align="center" style="padding:38px 0 12px 0;">
+              <div style="font-size:1.4em;font-weight:bold;color:#2095b4;letter-spacing:-1.2px;">
+                이메일 인증 안내
+              </div>
+              <div style="width:54px;height:54px;border-radius:14px;margin:16px auto 0;background:#e6f9fc;display:flex;align-items:center;justify-content:center;">
+                <!-- 의료적 느낌의 아이콘 (SVG) -->
+                <svg width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="7" y="13" width="20" height="14" rx="5" fill="#acd9ea"/>
+                  <rect x="13.3" y="18" width="7.4" height="1.5" rx=".7" fill="#2095b4"/>
+                  <rect x="16" y="16" width="1.5" height="7.5" rx=".7" fill="#2095b4"/>
+                  <ellipse cx="17" cy="13" rx="7" ry="7" fill="#27b5ce" opacity="0.18"/>
+                </svg>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="text-align:center;color:#3a547a;font-size:1.08em;padding:9px 34px 0 34px;">
+              안녕하세요!<br>
+              본인 확인을 위해 아래의 <b>인증 코드</b>를 정확히 입력해 주세요.
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:24px 0;">
+              <div style="background:#e2f5ff;border-radius:9px;font-size:1.7em;letter-spacing:6px;color:#0589a6;font-weight:700;display:inline-block;padding:15px 37px;box-shadow:0 2px 8px rgba(42,171,217,0.07);font-family:monospace;">
+                {{CODE}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-size:0.97em;color:#385d7a;padding:0 32px 6px 32px;text-align:center;">
+              인증 코드는 <b>10분간</b>만 유효해요.<br>
+              인증 요청을 하지 않으셨다면, 이 메일은 무시하셔도 됩니다.
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding-top:18px;color:#77a3b8;font-size:0.93em">
+              본 메일은 병원 예약/관리 프로그램 인증을 위해 자동 발송되었습니다.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

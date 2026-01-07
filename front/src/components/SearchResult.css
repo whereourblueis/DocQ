@@ -1,0 +1,129 @@
+.search-result-container {
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.hospital-card {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.hospital-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.hospital-header h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.department {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.hospital-info {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.distance {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.address {
+  color: #555;
+}
+
+.weekend {
+  margin-left: 10px;
+}
+/* --- 기존 CSS 코드 아래에 이 부분을 추가하세요 --- */
+
+/* 페이지 전체 헤더 스타일 */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.page-header .logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.page-header h2 {
+  color: #555;
+  font-size: 1.2rem;
+}
+
+/* 진료 과목을 담는 컨테이너 */
+.subjects-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 개별 진료 과목 태그 */
+.subject-tag {
+  background-color: #e7f5ff;
+  color: #1c7ed6;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* 에러 메시지 스타일 */
+.error-message {
+    color: #d32f2f;
+}
+
+/* 검색 결과가 없을 때 표시할 카드 */
+.no-results-card {
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+/* ... 기존 CSS 코드 맨 아래에 추가 ... */
+
+.hospital-actions {
+  margin-top: 15px;
+  text-align: right; /* 버튼을 오른쪽으로 정렬 */
+}
+
+.reservation-btn {
+  background-color: #129fd6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reservation-btn:hover {
+  background-color: #0e86b3;
+}

@@ -1,0 +1,376 @@
+/* MyPage.css - 전반적인 스타일 개선 */
+
+/* 1. 기본 레이아웃 및 배경 */
+.mypage-container {
+  background-color: #f8f9fa; /* 부드러운 회색 배경 */
+  min-height: 100vh;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+}
+
+.mypage-header {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #f1f3f5; /* 더 연하고 부드러운 구분선 */
+  text-align: left; /* ✨ 중앙 정렬에서 좌측 정렬로 변경 */
+}
+
+.mypage-header .logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #212529;
+  cursor: pointer;
+  margin: 0;
+  display: inline-block; /* 다른 요소와 같은 줄에 배치하기 위함 */
+  vertical-align: baseline;
+}
+
+.mypage-header h2 {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 300; /* ✨ 폰트 두께를 매우 가늘게 변경 */
+  color: #adb5bd; /* ✨ 부드러운 회색으로 변경하여 튀지 않게 함 */
+  margin: 0 0 0 0.75rem; /* 로고 옆에 간격 추가 */
+  vertical-align: baseline;
+}
+
+.mypage-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem; /* 섹션 간 간격 */
+}
+
+/* 2. 사용자 정보 카드 */
+.user-profile-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e9ecef;
+}
+
+.user-profile-card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #343a40;
+}
+
+.user-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.user-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-item strong {
+  font-size: 0.9rem;
+  color: #868e96;
+  margin-bottom: 0.25rem;
+}
+
+.user-info-item span {
+  font-size: 1.1rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+
+/* 3. 예약 목록 섹션 */
+.reservations-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e9ecef;
+}
+
+/* 4. 탭 네비게이션 */
+.tabs-container {
+  display: flex;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 1.5rem;
+}
+
+.tab-item {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #868e96;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.tab-item.active {
+  color: #129fd6;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #129fd6;
+}
+
+/* 5. 예약 카드 */
+.reservation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reservation-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.reservation-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+}
+
+.card-info {
+  flex-grow: 1;
+  display: grid;
+  grid-template-areas:
+    "hospital status"
+    "details  details";
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+}
+
+.card-info h4 {
+  grid-area: hospital;
+  font-size: 1.2rem;
+  margin: 0;
+  color: #212529;
+}
+
+.card-details {
+  grid-area: details;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem; /* 행/열 간격 */
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.card-details p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 6. 상태 배지 */
+.status-badge {
+  grid-area: status;
+  justify-self: end;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-reserved { background-color: #e7f5ff; color: #1c7ed6; }
+.status-completed { background-color: #e3fafc; color: #1098ad; }
+.status-reviewed { background-color: #f1f3f5; color: #495057; }
+.status-canceled { background-color: #fff5f5; color: #fa5252; }
+
+/* 7. 카드 액션 버튼 (리뷰) */
+.card-actions {
+  flex-shrink: 0; /* 버튼 크기가 줄어들지 않도록 */
+}
+
+.review-btn, .review-done-badge {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.review-btn {
+  background-color: #129fd6;
+  color: white;
+}
+
+.review-btn:hover {
+  background-color: #0e86b3;
+  transform: translateY(-1px);
+}
+
+.review-done-badge {
+  background-color: #20c997;
+  color: white;
+  cursor: default;
+}
+
+
+/* 8. 예약 내역이 없을 때 */
+.no-reservations-placeholder {
+  text-align: center;
+  padding: 3rem;
+  border: 2px dashed #e9ecef;
+  border-radius: 12px;
+  color: #868e96;
+}
+
+.no-reservations-placeholder h4 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.no-reservations-placeholder p {
+  margin: 0;
+}
+
+/* 9. 로딩 및 에러 메시지 */
+.mypage-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    font-size: 1.2rem;
+    color: #495057;
+}
+
+.mypage-message-container.error-message {
+    color: #fa5252;
+}
+
+/* --- 💡 [추가] 리뷰 카드에 새로 추가된 스타일 --- */
+
+/* 리뷰 내용과 태그를 감싸는 영역 */
+.review-card-body {
+  margin-top: 10px;
+  min-height: 40px; /* 내용이 없어도 최소 높이 유지 */
+}
+
+/* 태그들을 담는 컨테이너 */
+.review-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* 태그 사이의 간격 */
+}
+
+/* 개별 태그 스타일 */
+.review-tag {
+  background-color: #e6fcf5; /* 민트색 배경 */
+  color: #087f5b; /* 짙은 녹색 글씨 */
+  padding: 5px 12px;
+  border-radius: 16px; /* 둥근 모서리 */
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* ... (기존 MyPage.css의 다른 스타일은 그대로 둡니다) ... */
+
+
+/* --- 💡 [업데이트] 리뷰 목록 전체 스타일 --- */
+
+/* 리뷰 목록 컨테이너 */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 카드 사이의 간격 */
+}
+
+/* 개별 리뷰 카드 */
+.review-item-card {
+  background-color: #fff;
+  border: 1px solid #e9ecef; /* 더 부드러운 회색 테두리 */
+  border-radius: 12px; /* 둥근 모서리 */
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); /* 은은한 그림자 효과 */
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.review-item-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 마우스를 올리면 그림자 강조 */
+}
+
+/* 병원 이름 */
+.review-hospital-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #343a40;
+  margin: 0 0 16px 0; /* 아래쪽에 여백 추가 */
+}
+
+/* 리뷰 내용 (텍스트 또는 태그) 영역 */
+.review-card-body {
+  min-height: 40px;
+}
+
+/* 별점 + 텍스트 리뷰를 감싸는 컨테이너 */
+.text-review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* 별점과 텍스트 사이의 간격 */
+}
+
+/* 별점 스타일 */
+.review-rating {
+  font-size: 18px;
+  color: #fcc419; /* 선명한 노란색 별점 */
+}
+
+/* 텍스트 리뷰 내용 */
+.review-comment {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #495057; /* 너무 진하지 않은 회색 텍스트 */
+  margin: 0;
+  white-space: pre-wrap; /* 줄바꿈이 그대로 표시되도록 설정 */
+}
+
+/* 태그들을 담는 컨테이너 */
+.review-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 개별 태그 스타일 */
+.review-tag {
+  background-color: #e6fcf5;
+  color: #087f5b;
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 작성일자 */
+.review-timestamp {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #868e96;
+  text-align: right; /* 오른쪽 정렬 */
+}

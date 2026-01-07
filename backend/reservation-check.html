@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation Check</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    select, button {
+      margin-top: 5px;
+      padding: 8px;
+      width: 300px;
+      max-width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #007BFF;
+      color: #FFF;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .nav-buttons {
+      margin-bottom: 20px;
+    }
+
+    .reservations {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none;
+    }
+
+    .reservations h2 {
+      margin-bottom: 10px;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .loading {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>예약 확인</h1>
+
+  <!-- 이전 페이지로 이동 -->
+  <div class="nav-buttons">
+    <button onclick="window.location.href='index.html';">예약 페이지로 이동</button>
+  </div>
+
+  <!-- 병원 선택 -->
+  <div>
+    <h2>예약 정보를 확인할 병원을 선택해 주세요.</h2>
+    <label for="hospitalDropdown">병원:</label>
+    <select id="hospitalDropdown">
+      <option value="">병원을 선택해 주세요.</option>
+    </select>
+
+    <!-- 병원별 예약 확인 버튼 -->
+    <label for="reservationDate">날짜(선택사항):</label>
+    <input type="date" id="reservationDate">
+
+    <button id="checkReservations">예약 확인</button>
+    <div id="loadingIndicator" class="loading" style="display: none;">예약을 불러오는 중입니다...</div>
+    <div id="errorMessage" class="error"></div>
+  </div>
+
+  <!-- 병원 예약 목록 -->
+  <div class="reservations" id="reservationsDiv">
+    <h2>예약 리스트</h2>
+    <ul id="reservationList"></ul>
+  </div>
+
+  <script>
+    // DOM 요소 참조
+    const hospitalDropdown = document.getElementById('hospitalDropdown');
+    const reservationList = document.getElementById('reservationList');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const errorMessage = document.getElementById('errorMessage');
+    const reservationsDiv = document.getElementById('reservationsDiv');
+    const reservationDateInput = document.getElementById('reservationDate');
+
+    // 병원 목록 불러오기
+    fetch('http://localhost:8080/hospitals')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('병원 리스트를 불러오는 데 실패하였습니다.');
+        }
+        return response.json();
+      })
+      .then(hospitals => {
+        hospitals.forEach(hospital => {
+          const option = document.createElement('option');
+          option.value = hospital.id;
+          option.textContent = hospital.name;
+          hospitalDropdown.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading hospital list:', error);
+        errorMessage.textContent = '병원 리스트를 불러오는 데 실패하였습니다. 다시 시도해 주세요.';
+      });
+
+    // 예약 확인 로직
+    document.getElementById('checkReservations').addEventListener('click', () => {
+      const hospitalId = hospitalDropdown.value;
+      const date = reservationDateInput.value;
+
+      if (!hospitalId) {
+        alert('Please select a hospital.');
+        return;
+      }
+
+      loadingIndicator.style.display = 'block';
+      errorMessage.textContent = ''; // 오류 메시지 초기화
+      reservationsDiv.style.display = 'none'; // 예약 목록 초기화
+
+      // API 호출 URL 생성
+      let url = `http://localhost:8080/reservations/${hospitalId}/reservations`;
+      if (date) {
+        url += `?date=${date}`;
+      }
+
+      // 예약 데이터 요청
+      fetch(url)
+        .then(response => {
+          loadingIndicator.style.display = 'none';
+          if (!response.ok) {
+            throw new Error('Failed to fetch reservation data.');
+          }
+          return response.json();
+        })
+        .then(reservations => {
+          // 예약 목록 표시
+          if (reservations.length === 0) {
+            reservationList.innerHTML = '<li>존재하는 예약이 없습니다.</li>';
+          } else {
+            reservationList.innerHTML = reservations
+              .map(reservation => `<li>이름: ${reservation.patientName}, 날짜 및 시간: ${reservation.reservationTime}</li>`)
+              .join('');
+          }
+          reservationsDiv.style.display = 'block';
+        })
+        .catch(error => {
+          loadingIndicator.style.display = 'none';
+          console.error('Error fetching reservations:', error);
+          errorMessage.textContent = '예약 데이터를 가져오지 못했습니다. 나중에 다시 시도해주세요.';
+        });
+    });
+  </script>
+</body>
+</html>
